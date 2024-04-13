@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Signup = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [doctor, setDoctor] = useState<boolean>()
     const [loginCorrect, setLogin] = useState(true)
 
     const context = useSessionContext()
@@ -39,25 +40,45 @@ const Signup = () => {
                          <form className="space-y-4 md:space-y-6">
                               <div className="grid grid-cols-2 gap-4">
                                    <div>
-                                        <label htmlFor="nombre" className="block mb-2  font-medium text-gray-900 dark:text-white">Nombre</label>
+                                        <label className="block mb-2  font-medium text-gray-900 dark:text-white">Nombre</label>
                                         <input type="text" name="nombre" id="nombre" className="bg-gray-50 text-gray-800/90 font-medium sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-platinum/70 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nombre" />
                                    </div>
                                    <div>
-                                        <label htmlFor="apellidos" className="block mb-2 font-medium text-gray-900 dark:text-white">Apellidos</label>
+                                        <label className="block mb-2 font-medium text-gray-900 dark:text-white">Apellidos</label>
                                         <input type="text" name="apellidos" id="apellidos" className="bg-gray-50  text-gray-800/90 font-medium sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-platinum/70 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Apellidos" />
                                    </div>
                               </div>
 
                               <div className="grid grid-cols-2 gap-4">
                                    <div>
-                                        <label htmlFor="fecha_nacimiento" className="block mb-2 font-medium text-gray-900 dark:text-white">Fecha de nacimiento</label>
+                                        <label className="block mb-2 font-medium text-gray-900 dark:text-white">Fecha de nacimiento</label>
                                         <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" className="bg-gray-50 text-gray-800/90 font-medium sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-platinum/70 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                                    </div>
                                    <div>
-                                        <label htmlFor="correo" className="block mb-2 font-medium text-gray-900 dark:text-white">Correo</label>
+                                        <label className="block mb-2 font-medium text-gray-900 dark:text-white">Correo</label>
                                         <input type="email" name="correo" id="correo" className="bg-gray-50 text-gray-800/90 font-medium sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-platinum/70 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ejemplo@compañia.com" />
                                    </div>
                               </div>
+
+                              <div className="flex items-center">
+                                   <input id="link-checkbox" type="checkbox" onChange={(e)=>setDoctor(e.target.checked)} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                   <label htmlFor="link-checkbox" className="ms-2 text-sm font-medium text-white">¿Eres doctor?</label>
+                              </div>
+
+                              {doctor && (
+                                   <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                             <label className="block mb-2 font-medium text-gray-900 dark:text-white">Años de experiencia</label>
+                                             <input type="number" min='0' placeholder="Años de experiencia" name="fecha_nacimiento" id="fecha_nacimiento" className="bg-gray-50 text-gray-800/90 font-medium sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-platinum/70 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                                        </div>
+                                        <div>
+                                             <label className="block mb-2 font-medium text-gray-900 dark:text-white">Correo Profesional</label>
+                                             <input type="email" name="correo" id="correo" className="bg-gray-50 text-gray-800/90 font-medium sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-platinum/70 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ejemplo@compañia.com" />
+                                        </div>
+                                   </div>
+                              )
+
+                              }
 
                               <div>
                                    <label htmlFor="contrasena" className="block mb-2 font-medium text-gray-900 dark:text-white">Contraseña</label>
