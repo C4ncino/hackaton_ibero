@@ -7,9 +7,10 @@ class DiaryQuestions(Base):
     Diary - Questions relation Model
     """
 
-    __tablename__ = 'diaries'
+    __tablename__ = 'diaries_questions'
 
-    IdDiary = Column(Integer(), ForeignKey('diaries.Id'), nullable=False)
+    IdDiary = Column(Integer(), ForeignKey('diaries.Id'),
+                     nullable=False, primary_key=True)
     IdQuestion = Column(Integer(), ForeignKey('users.Id'), nullable=False)
 
     def serialize(self):
