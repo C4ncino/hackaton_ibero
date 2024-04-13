@@ -205,7 +205,7 @@ class DatabaseInterface:
             bool: True if the user exists, False otherwise
         """
 
-        user = self.session.query(User).filter(User.email == email)
+        user = self.session.query(User).filter(User.Email == email)
         user = user.filter(User.Password == password).first()
 
         if user is not None:
@@ -223,6 +223,6 @@ class DatabaseInterface:
         Returns:
             bool: True if the user exists, False otherwise
         """
-        user = self.session.query(User).filter(User.email == email).first()
+        user = self.session.query(User).filter(User.Email == email).first()
 
         return user is not None
