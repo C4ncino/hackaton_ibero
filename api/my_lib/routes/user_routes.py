@@ -17,6 +17,7 @@ def signup(user_type: str):
     Returns:
         response with the user created
     """
+    
 
     if database.exist_user(request.json['email']):
         return jsonify({
@@ -63,7 +64,7 @@ def signup(user_type: str):
             }), 501
 
     if created:
-        token = create_access_token(identity=user.Username)
+        token = create_access_token(identity=user.Email)
 
         data, element_id = user.serialize()
 
