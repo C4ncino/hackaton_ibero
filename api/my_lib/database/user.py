@@ -1,30 +1,50 @@
-from sqlalchemy import Column, Integer, String, TIMESTAMP
+from datetime import datetime as dt
+from sqlalchemy import Column, Integer, String, TIMESTAMP, Date
 from .base import Base
-from datetime import datetime
+
 
 class User(Base):
+    """
+    User Model
+    """
+
     __tablename__ = 'users'
 
     Id = Column(Integer(), primary_key=True)
-    FirstName = Column(String(20), nullable=False)
+    Name = Column(String(20), nullable=False)
     LastName = Column(String(30), nullable=False)
-    Age = Column(Integer(), nullable=False)
-    Username = Column(String(15), nullable=False, unique=True)
-    Password = Column(String(50), nullable=False)
-    Prestige = Column(Integer(), nullable=False, default=0)
-    Coins = Column(Integer(), nullable=False, default=0)
-    Streak = Column(Integer(), nullable=False, default=0)
-    CreatedDate = Column(TIMESTAMP(), nullable=False, default=datetime.now())
+    BirthDate = Column(Date(), nullable=False)
+    UserType = Column(String(1), nullable=False)
+    Email = Column(String(40), nullable=False, unique=True)
+    Password = Column(String(32), nullable=False)
+    PhoneNumber = Column(String(10), nullable=False, default="")
+    ExternalNumber = Column(String(5), nullable=False, default="")
+    InternalNumber = Column(String(5), nullable=False, default="")
+    StreetName = Column(String(30), nullable=False, default="")
+    City = Column(String(30), nullable=False, default="")
+    Country = Column(String(30), nullable=False, default="")
+    ZipCode = Column(String(5), nullable=False, default="")
+    CreatedDate = Column(TIMESTAMP(), nullable=False, default=dt.now())
 
     def serialize(self):
+        """
+        Serialize the data
+
+        Returns:
+            dict: The serialized data
+        """
+
         return {
-            "id": self.Id,
-            "firstName": self.FirstName,
-            "lastName": self.LastName,
-            "age": self.Age,
-            "username": self.Username,
-            "prestige": self.Prestige,
-            "coins": self.Coins,
-            "streak": self.Streak,
-            "createdDate": self.CreatedDate
-        }
+            "Name": self.Name,
+            "LastName": self.LastName,
+            "Email": self.Email,
+            "BirthDate": self.BirthDate.strftime('%d-%m-%Y'),
+            "UserType": self.UserType,
+            "PhoneNumber": self.PhoneNumber,
+            "ExternalNumber": self.ExternalNumber,
+            "InternalNumber": self.InternalNumber,
+            "StreetName": self.StreetName,
+            "City": self.City,
+            "Country": self.Country,
+            "ZipCode": self.ZipCode,
+        }, self.Id

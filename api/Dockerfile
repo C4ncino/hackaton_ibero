@@ -1,6 +1,6 @@
 FROM postgres:16-alpine
 
-ENV POSTGRES_DB=gmcube
+ENV POSTGRES_DB=mind_matters
 ENV POSTGRES_USER=admin
 ENV POSTGRES_PASSWORD=1234
 
