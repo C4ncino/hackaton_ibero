@@ -14,9 +14,10 @@ class User(Base):
     Name = Column(String(20), nullable=False)
     LastName = Column(String(30), nullable=False)
     BirthDate = Column(Date(), nullable=False)
+    UserType = Column(String(1), nullable=False)
     Email = Column(String(40), nullable=False, unique=True)
     Password = Column(String(32), nullable=False)
-    PhoneNumber = Column(String(10), nullable=False, default=0)
+    PhoneNumber = Column(String(10), nullable=False, default="")
     ExternalNumber = Column(String(5), nullable=False, default="")
     InternalNumber = Column(String(5), nullable=False, default="")
     StreetName = Column(String(30), nullable=False, default="")
@@ -38,6 +39,7 @@ class User(Base):
             "LastName": self.LastName,
             "Email": self.Email,
             "BirthDate": self.BirthDate.strftime('%d-%m-%Y'),
+            "UserType": self.UserType,
             "PhoneNumber": self.PhoneNumber,
             "ExternalNumber": self.ExternalNumber,
             "InternalNumber": self.InternalNumber,
