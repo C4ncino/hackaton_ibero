@@ -65,14 +65,9 @@ def signup(user_type: str):
     if created:
         token = create_access_token(identity=user.Username)
 
-        data, element_id = user.serialize()
-
         return jsonify({
             "message": "Created Successfully",
-            "user": {
-                "id": element_id,
-                "data": data
-            },
+            "user": user.serialize(),
             "token": token
         }), 201
 
@@ -99,14 +94,9 @@ def login():
     if success:
         token = create_access_token(identity=email)
 
-        data, element_id = user.serialize()
-
         return jsonify({
             "message": "Login Successfully",
-            "user": {
-                "id": element_id,
-                "data": data
-            },
+            "user": user.serialize(),
             "token": token
         }), 200
 
@@ -137,14 +127,12 @@ def me(user_id):
         }), 404
 
     if request.method == 'PUT':
-        data = database.update_table_row('users', user_id, request.json)
+        user = database.update_table_row('users', user_id, request.json)
 
         return jsonify({
             "message": "Updated Successfully",
-            "user": data
+            "user": user.seralize()
         }), 200
-
-    data, _ = user.serialize()
 
     if user.UserType == 'd':
         doctor = database.read_by_id('doctors', user_id)
@@ -154,10 +142,10 @@ def me(user_id):
                 "message": "Not found",
             }), 404
 
-        data['contactEmail'] = doctor.ContactEmail
-        data['ExperienceYears'] = doctor.ExperienceYears
+        user['contactEmail'] = doctor.ContactEmail
+        user['ExperienceYears'] = doctor.ExperienceYears
 
     return jsonify({
         "message": "Login Successfully",
-        "user": data
+        "user": user.serialize()
     }), 200
