@@ -22,6 +22,7 @@ class Question(Base):
         """
 
         return {
+            "Id": self.Id,
             "IdDoctor": self.IdDoctor,
             "QuestionText": self.QuestionText,
-        }, self.Id
+        }

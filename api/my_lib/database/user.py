@@ -35,6 +35,7 @@ class User(Base):
         """
 
         return {
+            "Id": self.Id,
             "Name": self.Name,
             "LastName": self.LastName,
             "Email": self.Email,
@@ -47,4 +48,4 @@ class User(Base):
             "City": self.City,
             "Country": self.Country,
             "ZipCode": self.ZipCode,
-        }, self.Id
+        }
