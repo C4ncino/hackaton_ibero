@@ -8,10 +8,25 @@ from sqlalchemy.orm import sessionmaker
 import sqlalchemy.exc
 
 from .user import User
+from .doctor import Doctor
+from .patient import Patient
+from .emergency_contact import EmergencyContact
+from .questions import Question
+from .diary import Diary
+from .diary_questions import DiaryQuestions
+from .register import Register
+
 from .base import Base
 
 TABLE_CLASS_MAP = {
-    'user': User,
+    'users': User,
+    'doctors': Doctor,
+    'patients': Patient,
+    'emergency_contacts': EmergencyContact,
+    'questions': Question,
+    'diaries': Diary,
+    'diary_questions': DiaryQuestions,
+    'registers': Register
 }
 
 
