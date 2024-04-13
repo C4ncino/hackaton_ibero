@@ -1,6 +1,8 @@
-from flask import Request, jsonify
+""""
+General functions and variables
+"""
 
-# -----------------------------------------------------------------------------
+from flask import Request, jsonify
 
 
 def validate(request: Request, fields: list[str]) -> str:
