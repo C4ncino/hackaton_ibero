@@ -1,3 +1,4 @@
+import DiaryNotes from "@pages/diary/DiaryNotes";
 import Home from "@pages/Home";
 import Login from "@pages/auth/Login";
 import Me from "@pages/auth/Me";
@@ -20,5 +21,9 @@ export const router = createBrowserRouter([
     {
         path: "/me",
         element: <Me />
+    },
+    {
+        path: "/diary",
+        element: <DiaryNotes />
     },
 ])
