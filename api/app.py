@@ -1,3 +1,6 @@
+"""
+Main App
+"""
 import os
 
 from flask import Flask, jsonify, request
@@ -25,6 +28,32 @@ URI = '/api/v1/'
 @app.route(URI + 'signup', methods=['POST'])
 @crud_template(request, [])
 def signup():
+    """
+    Create a new user
+
+    Returns:
+        response with the user created
+    """
+
+    return jsonify({
+        "message": "Created Successfully",
+    }), 201
+
+    return jsonify({
+        "message": "Error while creating"
+    }), 501
+
+
+@app.route(URI + 'login', methods=['POST'])
+@crud_template(request, [])
+def login():
+    """
+    Login an existing user
+
+    Returns:
+        response with the user logged in
+    """
+
     return jsonify({
         "message": "Created Successfully",
     }), 201
