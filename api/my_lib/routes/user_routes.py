@@ -115,7 +115,7 @@ def login():
     }), 401
 
 
-@user_bp.route(URI + 'me/<string:user_id>', methods=['GET', 'PUT'])
+@user_bp.route(URI + 'me/<int:user_id>', methods=['GET', 'PUT'])
 @crud_template(request, optional_fields=['email', 'name', 'lastName',
                                          'birthDate', 'contactEmail',
                                          'ExperienceYears'])

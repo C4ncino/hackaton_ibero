@@ -112,14 +112,14 @@ class DatabaseInterface:
 
         return None
 
-    def read_all_by_foreign_key(self, table_name, column, element_id):
+    def read_by_field(self, table_name, field, value):
         """
-        Read all rows by foreign key
+        Read all rows by a selected field
 
         Args:
             table_name: The name of the table
-            column: The name of the column
-            element_id: The id of the element
+            field: The name of the field
+            value: The field value
 
         Returns:
             object: The row
@@ -130,7 +130,7 @@ class DatabaseInterface:
         if table_class:
             data = self.session.query(table_class)
             data = data.filter_by(
-                    getattr(table_class, column) == element_id
+                    getattr(table_class, field) == value
                 ).all()
 
             return data if len(data) > 0 else []
