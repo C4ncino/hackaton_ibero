@@ -1,9 +1,10 @@
-import DiaryNotes from "@pages/diary/DiaryNotes";
+import DiaryNotes from "@pages/start/DiaryNotes";
 import Home from "@pages/Home";
 import Login from "@pages/auth/Login";
 import Me from "@pages/auth/Me";
 import Signup from "@pages/auth/Signup";
 import { createBrowserRouter } from "react-router-dom";
+import About from "@pages/diary/About";
 
 export const router = createBrowserRouter([
     {
@@ -24,6 +25,11 @@ export const router = createBrowserRouter([
     },
     {
         path: "/diary",
+        element: <About />
+    },
+    {
+        path: "/start",
         element: <DiaryNotes />
     },
+   
 ])
