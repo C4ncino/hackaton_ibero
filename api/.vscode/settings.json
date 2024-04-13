@@ -3,6 +3,7 @@
         "gquest",
         "jsonify",
         "nullable",
+        "postgresql",
         "sessionmaker",
         "sqlalchemy"
     ]

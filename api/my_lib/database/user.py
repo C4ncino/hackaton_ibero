@@ -1,8 +1,19 @@
+"""
+Declaration of the User Model
+"""
+
+from datetime import datetime
 from sqlalchemy import Column, Integer, String, TIMESTAMP
 from .base import Base
-from datetime import datetime
+
+# -----------------------------------------------------------------------------
+
 
 class User(Base):
+    """
+    User Model
+    """
+
     __tablename__ = 'users'
 
     Id = Column(Integer(), primary_key=True)
@@ -17,8 +28,14 @@ class User(Base):
     CreatedDate = Column(TIMESTAMP(), nullable=False, default=datetime.now())
 
     def serialize(self):
+        """
+        Serialize the User
+
+        Returns:
+            dict: The serialized User
+        """
+
         return {
-            "id": self.Id,
             "firstName": self.FirstName,
             "lastName": self.LastName,
             "age": self.Age,
@@ -27,4 +44,4 @@ class User(Base):
             "coins": self.Coins,
             "streak": self.Streak,
             "createdDate": self.CreatedDate
-        }
+        }, self.Id
