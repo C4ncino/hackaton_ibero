@@ -9,7 +9,7 @@ class DiaryQuestions(Base):
 
     __tablename__ = 'diaries_questions'
 
-    Id = Column(Integer(), primary_key=True, increment=True)
+    Id = Column(Integer(), primary_key=True, autoincrement=True)
     IdDiary = Column(Integer(), ForeignKey('diaries.Id'),
                      nullable=False)
     IdQuestion = Column(Integer(), ForeignKey('users.Id'), nullable=False)

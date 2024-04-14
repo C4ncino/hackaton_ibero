@@ -9,7 +9,7 @@ class Question(Base):
 
     __tablename__ = 'questions'
 
-    Id = Column(Integer(), primary_key=True, increment=True)
+    Id = Column(Integer(), primary_key=True, autoincrement=True)
     IdDoctor = Column(Integer(), ForeignKey('doctors.Id'), nullable=False)
     QuestionText = Column(String(100), nullable=False)
 

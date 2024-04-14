@@ -10,7 +10,7 @@ class EmergencyContact(Base):
 
     __tablename__ = 'emergency_contacts'
 
-    Id = Column(Integer(), primary_key=True, increment=True)
+    Id = Column(Integer(), primary_key=True, autoincrement=True)
     IdUser = Column(Integer(), ForeignKey('users.Id'), nullable=False)
     Name = Column(String(20), nullable=False)
     LastName = Column(String(30), nullable=False)
