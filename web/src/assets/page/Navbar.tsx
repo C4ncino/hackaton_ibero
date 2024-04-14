@@ -30,7 +30,7 @@ const NavBar = ({ needBlur }: Props) => {
 
             {context.user ? (
                 <Link to="/me">
-                    <span className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none focus:bg-gray-200 hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Hola, {context.user.Name}</span>
+                    <span className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none focus:bg-gray-200 hover:bg-gray-200 rounded text-base mt-4 md:mt-0 mr-4">Hola, {context.user.Name}</span>
                     <FontAwesomeIcon icon={faUser} className="w-6 h-6 text-darkLavanda" />
                 </Link>
             ) : (
