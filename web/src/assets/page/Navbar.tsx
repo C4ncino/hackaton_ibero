@@ -10,8 +10,6 @@ interface Props {
 const NavBar = ({ needBlur }: Props) => {
     const context = useSessionContext()
 
-    console.log(context.user)
-
     let headerClass = "text-gray-600 w-full px-32 py-5  mx-auto flex flex-wrap flex-col md:flex-row items-center rounded-lg"
     headerClass += needBlur ? " bg-platinum/40 backdrop-hue-rotate-15 backdrop-blur-sm" : ""
 
@@ -31,7 +29,7 @@ const NavBar = ({ needBlur }: Props) => {
 
             {context.user ? (
                 <Link to="/me">
-                    <span className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none focus:bg-gray-200 hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Hola, {context.user.name}</span>
+                    <span className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none focus:bg-gray-200 hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Hola, {context.user.Name}</span>
                     <FontAwesomeIcon icon={faUser} className="w-6 h-6 text-darkLavanda" />
                 </Link>
             ) : (

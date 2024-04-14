@@ -20,7 +20,6 @@ def signup(user_type: str):
     Returns:
         response with the user created
     """
-    
 
     if database.exist_user(request.json['email']):
         return jsonify({
@@ -56,7 +55,7 @@ def signup(user_type: str):
         success, _ = database.create_table_row(
             'doctors',
             {
-                'IdUser': user.Id,
+                'Id': user.Id,
                 'ContactEmail': request.json['contactEmail'],
                 'ExperienceYears': request.json['ExperienceYears'],
             }
