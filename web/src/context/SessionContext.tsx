@@ -31,15 +31,9 @@ const SessionContextProvider = ({ children }: Props) => {
         }
         else if (type === false) {
             console.log("Paciente");
-<<<<<<< HEAD
-            data = await post('signup/p', "", JSON.stringify({"name": firstName, "lastName": lastName, "email": email, "password": passwordHash, "birthDate": birthDate}))
-=======
-            console.log(typeof birthDate);
-
             data = await post('signup/p', "", JSON.stringify({ "name": firstName, "lastName": lastName, "email": email, "password": passwordHash, "birthDate": birthDate }))
+            console.log(typeof birthDate);
             console.log(data);
-
->>>>>>> cancino
         }
 
         if (data != false) {
@@ -53,7 +47,7 @@ const SessionContextProvider = ({ children }: Props) => {
 
     const login = async (email: string, password: string) => {
         const passwordHash = MD5(password).toString();
-    
+
 
         const data = await post("login", "", JSON.stringify({ "email": email, "password": passwordHash }))
         console.log(data)
