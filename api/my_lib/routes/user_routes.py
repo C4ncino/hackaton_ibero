@@ -1,3 +1,6 @@
+"""
+Define user routes
+"""
 from datetime import datetime as dt
 
 from flask import Blueprint, jsonify, request
@@ -26,7 +29,7 @@ def signup(user_type: str):
 
     date = dt.strptime(request.json['birthDate'], "%d-%m-%Y").date()
 
-    created, user = database.crate_table_row(
+    created, user = database.create_table_row(
         'users',
         {
             'Name': request.json['name'],
@@ -50,7 +53,7 @@ def signup(user_type: str):
                 "errors": errors
             }), 400
 
-        success, _ = database.crate_table_row(
+        success, _ = database.create_table_row(
             'doctors',
             {
                 'Id': user.Id,
@@ -133,7 +136,7 @@ def me(user_id):
 
         return jsonify({
             "message": "Updated Successfully",
-            "user": user.seralize()
+            "user": user.serialize()
         }), 200
 
     if user.UserType == 'd':

@@ -10,7 +10,7 @@ class Diary(Base):
 
     __tablename__ = 'diaries'
 
-    Id = Column(Integer(), primary_key=True)
+    Id = Column(Integer(), primary_key=True, autoincrement=True)
     IdUser = Column(Integer(), ForeignKey('users.Id'), nullable=False)
     Title = Column(String(40), nullable=False)
     Description = Column(String(256), nullable=False)
