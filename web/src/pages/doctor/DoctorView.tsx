@@ -71,7 +71,7 @@ const DoctorView = () => {
 
                <div className="flex flex-wrap mx-4">
                     {
-                         patients.map((patient, index) => (
+                         patients?.map((patient, index) => (
                               <div key={index} className="p-4 lg:w-1/3 md:w-1/2 w-full">
                                    {patient &&
                                         <div className="h-full flex sm:flex-row flex-col bg-white dark:bg-columbia/40 backdrop-hue-rotate-15 backdrop-blur-sm items-center sm:justify-start justify-center text-center sm:text-left p-3 rounded-xl">
