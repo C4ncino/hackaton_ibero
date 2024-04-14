@@ -1,0 +1,205 @@
+
+  {
+    "user": [
+        {
+            "Name": "John",
+            "LastName": "Doe",
+            "BirthDate": "01-01-1990",
+            "UserType": "d",
+            "Email": "johndoe@example.com",
+            "Password": "202cb962ac59075b964b07152d234b70"
+        },
+        {
+            "Name": "Jane",
+            "LastName": "Smith",
+            "BirthDate": "05-12-1985",
+            "UserType": "d",
+            "Email": "janesmith@example.com",
+            "Password": "202cb962ac59075b964b07152d234b70"
+        },
+        {
+            "Name": "Michael",
+            "LastName": "Johnson",
+            "BirthDate": "10-07-1978",
+            "UserType": "p",
+            "Email": "michaeljohnson@example.com",
+            "Password": "202cb962ac59075b964b07152d234b70"
+        },
+        {
+            "Name": "Emily",
+            "LastName": "Davis",
+            "BirthDate": "22-03-1995",
+            "UserType": "p",
+            "Email": "emilydavis@example.com",
+            "Password": "202cb962ac59075b964b07152d234b70"
+        },
+        {
+            "Name": "David",
+            "LastName": "Wilson",
+            "BirthDate": "17-09-1982",
+            "UserType": "p",
+            "Email": "davidwilson@example.com",
+            "Password": "202cb962ac59075b964b07152d234b70"
+        },
+        {
+            "Name": "Matthew",
+            "LastName": "Taylor",
+            "BirthDate": "14-04-1976",
+            "UserType": "p",
+            "Email": "matthewtaylor@example.com",
+            "Password": "202cb962ac59075b964b07152d234b70"
+        },
+        {
+            "Name": "Olivia",
+            "LastName": "Anderson",
+            "BirthDate": "08-11-1989",
+            "UserType": "p",
+            "Email": "oliviaanderson@example.com",
+            "Password": "202cb962ac59075b964b07152d234b70"
+        },
+        {
+            "Name": "Daniel",
+            "LastName": "Clark",
+            "BirthDate": "03-02-1992",
+            "UserType": "p",
+            "Email": "danielclark@example.com",
+            "Password": "202cb962ac59075b964b07152d234b70"
+        },
+        {
+            "Name": "Sophia",
+            "LastName": "Thomas",
+            "BirthDate": "19-10-1987",
+            "UserType": "p",
+            "Email": "sophiathomas@example.com",
+            "Password": "202cb962ac59075b964b07152d234b70"
+        }
+    ],
+
+    "doctor": [
+        {
+            "Id" : 1,
+            "ContactEmail": "doctor1@example.com",
+            "ExperienceYears": 10
+        },
+        {
+            "Id" : 2,
+            "ContactEmail": "doctor2@example.com",
+            "ExperienceYears": 5
+        }
+    ],
+
+    "patient": [
+        {
+            "Id": 3,
+            "IdDoctor": 1
+        },
+        {
+            "Id":  4, 
+            "IdDoctor": 1
+        },
+        {
+            "Id":  5, 
+            "IdDoctor": 1
+        },
+        {
+            "Id": 6,
+            "IdDoctor": 1
+        },
+        {
+            "Id": 7,
+            "IdDoctor": 2
+        },
+        {
+            "Id": 8,
+            "IdDoctor": 2
+        },
+        {
+            "Id": 9,
+            "IdDoctor": 2
+        }
+
+    ],
+
+    "questions": [
+
+        {
+            "IdDoctor": 1,
+            "QuestionText": "¿Qué emociones has experimentado hoy?¿Cuáles han sido las mas intensas?"
+        },
+        {
+            "IdDoctor": 1,
+            "QuestionText": "¿En qué situciones te has sentido capaz y orgulloso/a?"
+        },
+        {
+            "IdDoctor": 2,
+            "QuestionText": "¿Te sientes conectado/a y apoyado/a por tu familia y/o amigos?"
+        },
+        {
+            "IdDoctor": 2,
+            "QuestionText": "¿Qué emociones encuentras didíciles de gestionar?"
+        }
+    ],
+
+    "diary": [
+        {
+            "Title": "Diary 1",
+            "IdUser": 4,
+            "Description": "Primer diario"
+        },
+        {
+            "Title": "Diary 2",
+            "IdUser": 2,
+            "Description": "Emciones de hoy"
+        },
+        {
+            "Title": "Diary 3",
+            "IdUser": 3,
+            "Description": "Paz para mi"
+        },
+        {
+            "Title": "Diary 4",
+            "IdUser": 5,
+            "Description": "Sexto diario"
+        }
+
+    ],
+    "register": [
+        {
+            "IdDiary": 1,
+            "Answer": "Me siento bien"
+        },
+        {
+            "IdDiary": 2,
+            "Answer": "Ahí voy"
+        },
+        {
+            "IdDiary": 3,
+            "Answer": "Esta semana he experimentado de todo"
+        },
+        {
+            "IdDiary": 4,
+            "Answer": "Sin comentarios"
+        }
+
+    ],
+
+    "diary_question": [
+        {
+            "IdDiary": 1,
+            "IdQuestion": 1
+          },
+          {
+            "IdDiary": 2,
+            "IdQuestion": 2
+          },
+          {
+            "IdDiary": 3,
+            "IdQuestion": 3
+          },
+          {
+            "IdDiary": 4,
+            "IdQuestion": 4
+          }
+    ]
+  }
+
