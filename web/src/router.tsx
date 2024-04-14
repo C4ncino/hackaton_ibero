@@ -11,6 +11,8 @@ import AddDoctor from "@pages/patient/AddDoctor";
 import Patient from "@pages/doctor/subpages/Patient";
 import CreateDiary from "@pages/doctor/subpages/Create";
 import ReadDiary from "@pages/doctor/subpages/ReadDiary";
+import Questions from "@pages/doctor/subpages/Questions";
+
 
 export const router = createBrowserRouter([
     {
@@ -56,6 +58,10 @@ export const router = createBrowserRouter([
     {
         path: "create_diary/:idUser",
         element: <CreateDiary />
+    },
+    {
+        path: "/subpages",
+        element: <Questions />
     },
     {
         path: "/addDoctor/:idDoctor",
