@@ -49,8 +49,6 @@ const OneDiary = () => {
         post(`answer/${params.id}/1`, context.token, JSON.stringify({ "answer": currentAnswer}))
     }
 
-    console.log(currentAnswer);
-    
 
     return (
         <PageTemplate>
@@ -62,6 +60,11 @@ const OneDiary = () => {
                 <textarea id="message" value={currentAnswer} onChange={handleAnswerChange} className="p-4 w-full font-thin text-white rounded-lg border bg-darkLavanda/50 backdrop-hue-rotate-15 backdrop-blur-sm placeholder:text-platinum resize-none max-h-44 min-h-[3.75rem] form-sizing" placeholder="Write your thoughts here..." >
                 </textarea>
             </form>
+            
+            {/* <form className="m-16">
+                <textarea id="message" value={currentAnswer} onChange={handleAnswerChange} className="p-4 w-full font-thin text-white rounded-lg border bg-darkLavanda/50 backdrop-hue-rotate-15 backdrop-blur-sm placeholder:text-platinum resize-none max-h-44 min-h-[3.75rem] form-sizing" placeholder="Write your thoughts here..." >
+                </textarea>
+            </form> */}
             <button onClick={sendAnswer}>Enviar datos</button>
         </PageTemplate>
     );
