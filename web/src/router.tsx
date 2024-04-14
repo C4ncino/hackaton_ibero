@@ -5,7 +5,7 @@ import Me from "@pages/auth/Me";
 import Signup from "@pages/auth/Signup";
 import { createBrowserRouter } from "react-router-dom";
 import DoctorView from "@pages/doctor/DoctorView";
-import About from "@pages/diary/About";
+import About from "@pages/home/About";
 
 export const router = createBrowserRouter([
     {

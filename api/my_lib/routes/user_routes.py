@@ -20,7 +20,6 @@ def signup(user_type: str):
     Returns:
         response with the user created
     """
-    
 
     if database.exist_user(request.json['email']):
         return jsonify({

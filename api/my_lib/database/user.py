@@ -10,7 +10,7 @@ class User(Base):
 
     __tablename__ = 'users'
 
-    Id = Column(Integer(), primary_key=True)
+    Id = Column(Integer(), primary_key=True, autoincrement=True)
     Name = Column(String(20), nullable=False)
     LastName = Column(String(30), nullable=False)
     BirthDate = Column(Date(), nullable=False)
