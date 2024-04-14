@@ -49,13 +49,15 @@ const AddDoctor = () => {
           <PageTemplate>
                {doctorData && (<section className="text-gray-600 body-font">
                     <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-                    <img className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600" />
+                    <img className="lg:w-1/6 md:w-2/6 w-4/6 mb-10 object-cover object-center rounded" alt="hero" src="https://thispersondoesnotexist.com/" />
                          <div className="text-center lg:w-2/3 w-full">
                               <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{doctorData.Name} {user.LastName}</h1>
                               <p>Contacto: {doctorData.ContactEmail}</p>
                               <p>Años de experiencia: {doctorData.ExperienceYears}</p>
+
+                              <p className="mt-7">Te ha mandado una invitación para el acompañamiento de este proceso.</p>
                               <div className="flex justify-center">
-                                   <button onClick={accept} className="inline-flex text-white bg-darkLavanda border-0 py-2 px-6 focus:outline-none hover:bg-hoverDarkLavanda rounded text-lg">Aceptar invitación</button>
+                                   <button onClick={accept} className="mt-5 inline-flex text-white bg-darkLavanda border-0 py-2 px-6 focus:outline-none hover:bg-hoverDarkLavanda rounded text-lg">Aceptar invitación</button>
                               </div>
                          </div>
                     </div>
