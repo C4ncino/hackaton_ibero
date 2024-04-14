@@ -18,29 +18,28 @@ const SessionContextProvider = ({ children }: Props) => {
     const [token, setToken] = useState("")
 
     const {
-        get,
         post
     } = useAPI();
 
-    const signup = async (firstName: string, lastName: string, experienceYears: number, birthDate: string, email: string, password: string, type:boolean, contactEmail:string) => {
+    const signup = async (firstName: string, lastName: string, experienceYears: number, birthDate: string, email: string, password: string, type: boolean, contactEmail: string) => {
         const passwordHash = MD5(password).toString()
 
         let data
-        if (type === true){
+        if (type === true) {
             console.log("Doctor");
-            data = await post('signup/d', "", JSON.stringify({"name": firstName, "lastName": lastName, "email": email, "password": passwordHash, "birthDate": birthDate, "contactEmail": contactEmail, "ExperienceYears": experienceYears}))
+            data = await post('signup/d', "", JSON.stringify({ "name": firstName, "lastName": lastName, "email": email, "password": passwordHash, "birthDate": birthDate, "contactEmail": contactEmail, "ExperienceYears": experienceYears }))
         }
-        else if (type === false){
+        else if (type === false) {
             console.log("Paciente");
             console.log(typeof birthDate);
-            
-            data = await post('signup/p', "", JSON.stringify({"name": firstName, "lastName": lastName, "email": email, "password": passwordHash, "birthDate": birthDate}))
+
+            data = await post('signup/p', "", JSON.stringify({ "name": firstName, "lastName": lastName, "email": email, "password": passwordHash, "birthDate": birthDate }))
             console.log(data);
-            
+
         }
 
         if (data != false) {
-            // setUser(data['user'])
+            setUser(data['user'])
             setToken(data['token'])
             return true
         }

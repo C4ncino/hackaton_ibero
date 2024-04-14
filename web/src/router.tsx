@@ -4,7 +4,7 @@ import Login from "@pages/auth/Login";
 import Me from "@pages/auth/Me";
 import Signup from "@pages/auth/Signup";
 import { createBrowserRouter } from "react-router-dom";
-import About from "@pages/diary/About";
+import About from "@pages/home/About";
 
 export const router = createBrowserRouter([
     {
@@ -31,5 +31,4 @@ export const router = createBrowserRouter([
         path: "/start",
         element: <DiaryNotes />
     },
-   
 ])
