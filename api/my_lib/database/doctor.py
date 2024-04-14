@@ -22,6 +22,7 @@ class Doctor(Base):
         """
 
         return {
+            "Id": self.Id,
             "ContactEmail": self.ContactEmail,
             "ExperienceYears": self.ExperienceYears
-        }, self.Id
+        }

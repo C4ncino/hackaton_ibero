@@ -21,5 +21,6 @@ class Patient(Base):
         """
 
         return {
+            "Id": self.Id,
             "IdDoctor": self.IdDoctor
-        }, self.Id
+        }

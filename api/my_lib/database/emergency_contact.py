@@ -28,10 +28,11 @@ class EmergencyContact(Base):
         """
 
         return {
+            "Id": self.Id,
             "IdUser": self.IdUser,
             "Name": self.Name,
             "LastName": self.LastName,
             "Relation": self.Relation,
             "Email": self.Email,
             "PhoneNumber": self.PhoneNumber,
-        }, self.Id
+        }
