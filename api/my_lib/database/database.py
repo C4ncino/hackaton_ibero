@@ -129,7 +129,7 @@ class DatabaseInterface:
 
         if table_class:
             data = self.session.query(table_class)
-            data = data.filter_by(
+            data = data.filter(
                     getattr(table_class, field) == value
                 ).all()
 

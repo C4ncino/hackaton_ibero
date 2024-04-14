@@ -1,11 +1,12 @@
-import DiaryNotes from "@pages/start/DiaryNotes";
+import { createBrowserRouter } from "react-router-dom";
+import Diaries from "@pages/diary/Diaries";
 import Home from "@pages/Home";
 import Login from "@pages/auth/Login";
 import Me from "@pages/auth/Me";
 import Signup from "@pages/auth/Signup";
-import { createBrowserRouter } from "react-router-dom";
 import DoctorView from "@pages/doctor/DoctorView";
 import About from "@pages/home/About";
+import OneDiary from "@pages/diary/subpages/OneDiarie";
 
 export const router = createBrowserRouter([
     {
@@ -25,12 +26,16 @@ export const router = createBrowserRouter([
         element: <Me />
     },
     {
-        path: "/diary",
+        path: "/about",
         element: <About />
     },
     {
-        path: "/start",
-        element: <DiaryNotes />
+        path: "/diary",
+        element: <Diaries />
+    },
+    {
+        path: "/diary/:id",
+        element: <OneDiary />
     },
     {
         path: "/patients",

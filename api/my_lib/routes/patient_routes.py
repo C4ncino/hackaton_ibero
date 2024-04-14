@@ -44,6 +44,8 @@ def add_doctor():
 
 @patient_bp.route(URI + '<int:patient_id>/diaries/<int:diary_id>',
                   methods=['GET'])
+@patient_bp.route(URI + '<int:patient_id>/diaries',
+                  methods=['GET'])
 @jwt_required()
 def patient_diaries(patient_id: int, diary_id: int = None):
     """
