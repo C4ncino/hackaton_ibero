@@ -25,8 +25,9 @@ class Diary(Base):
         """
 
         return {
+            "Id": self.Id,
             "IdUser": self.IdUser,
             "Title": self.Title,
             "Description": self.Description,
             "Timestamp": self.Timestamp.strftime('%d-%m-%Y'),
-        }, self.Id
+        }

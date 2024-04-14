@@ -25,8 +25,9 @@ class Register(Base):
         """
 
         return {
+            "Id": self.Id,
             "IdDiary": self.IdDiary,
             "IdQuestion": self.IdQuestion,
             "Answer": self.Answer,
             "Timestamp": self.Timestamp.strftime('%d-%m-%Y'),
-        }, self.Id
+        }
