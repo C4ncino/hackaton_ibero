@@ -53,7 +53,7 @@ const Diaries = () => {
                               <p className="grow text-center p-2 text-platinum text-lg font-thin">{diary.Description}</p>
                               <p className="inline-flex gap-2 items-center text-platinum font-thin">
                                    <FontAwesomeIcon icon={faCalendarAlt} className="h-5 text-platinum" />
-                                   {diary.Date}
+                                   {diary.Timestamp}
                               </p>
                          </Link>
                     ))}

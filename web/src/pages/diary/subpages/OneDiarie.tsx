@@ -6,13 +6,14 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const OneDiary = () => {
     const params = useParams()
-    const { get } = useAPI();
+    const { get, post } = useAPI();
     const context = useSessionContext()
     const navigate = useNavigate()
 
     const [diary, setDiary] = useState<null | Diary>(null);
     const [answers, setAnswers] = useState<null | Answer[]>(null);
     const [questions, setQuestions] = useState<null | Question[]>(null);
+    const [currentAnswer, setCurrentAnswer] = useState("");
 
     const getData = async () => {
         if (context.user == null) {
@@ -34,19 +35,34 @@ const OneDiary = () => {
 
     useEffect(() => {
         getData();
-    })
+    },[])
+
+
+    // Manejador de cambio en el textarea
+    const handleAnswerChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setCurrentAnswer(event.target.value); // Actualiza el estado currentAnswer con el contenido del textarea
+    }
+
+
+    // Endpoint (answer): "answer/<int:diary_id>/<int:question_id>" 
+    const sendAnswer = async () => {
+        post(`answer/${params.id}/1`, context.token, JSON.stringify({ "answer": currentAnswer}))
+    }
+
+    console.log(currentAnswer);
+    
 
     return (
         <PageTemplate>
             {diary && (
-                <h1>Hola</h1>
+                <h1>Holaaa!</h1>
             )}
-
-            {/* <form className="m-16">
-                <textarea id="message" className="p-4 w-full font-thin text-white rounded-lg border bg-darkLavanda/50 backdrop-hue-rotate-15 backdrop-blur-sm placeholder:text-platinum resize-none max-h-44 min-h-[3.75rem] form-sizing"
-                    placeholder="Write your thoughts here..." >
+            
+            <form className="m-16">
+                <textarea id="message" value={currentAnswer} onChange={handleAnswerChange} className="p-4 w-full font-thin text-white rounded-lg border bg-darkLavanda/50 backdrop-hue-rotate-15 backdrop-blur-sm placeholder:text-platinum resize-none max-h-44 min-h-[3.75rem] form-sizing" placeholder="Write your thoughts here..." >
                 </textarea>
-            </form> */}
+            </form>
+            <button onClick={sendAnswer}>Enviar datos</button>
         </PageTemplate>
     );
 }

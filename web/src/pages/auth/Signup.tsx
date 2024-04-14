@@ -19,7 +19,7 @@ const Signup = () => {
      const goHome = useNavigate()
 
 
-     const handleChange = (e) => {
+     const handleChange = (e:any) => {
           const inputDate = e.target.value; // Obtener la fecha en formato 'YYYY-MM-DD'
           setBirthDate(inputDate)
           setCorrectedBirthDate(formatDateString(inputDate)) // Establecer la fecha formateada en el estado
@@ -47,7 +47,6 @@ const Signup = () => {
 
      return (
           <PageTemplate>
-
                <div className="flex flex-col items-center justify-center px-6 mx-auto lg:py-0">
                     <div className="w-full bg-white rounded-lg md:mt-10 sm:max-w-md xl:p-0 dark:bg-columbia/40 backdrop-hue-rotate-15 backdrop-blur-sm">
                          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
