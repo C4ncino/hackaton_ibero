@@ -53,6 +53,7 @@ def signup(user_type: str):
         success, _ = database.crate_table_row(
             'doctors',
             {
+                'Id': user.Id,
                 'ContactEmail': request.json['contactEmail'],
                 'ExperienceYears': request.json['ExperienceYears'],
             }

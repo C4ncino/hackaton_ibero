@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookBookmark } from '@fortawesome/free-solid-svg-icons';
+import { useSessionContext } from 'hooks/useSessionContext';
 
 interface Props {
     needBlur?: boolean
@@ -9,6 +10,9 @@ interface Props {
 const NavBar = ({ needBlur }: Props) => {
     let headerClass = "text-gray-600 w-full px-32 py-5  mx-auto flex flex-wrap flex-col md:flex-row items-center rounded-lg"
     headerClass += needBlur ? " bg-columbia/40 backdrop-hue-rotate-15 backdrop-blur-sm" : ""
+
+    const context = useSessionContext()
+    const user: any = context.user || false
 
     return (
         <header className={headerClass} >
@@ -22,6 +26,7 @@ const NavBar = ({ needBlur }: Props) => {
                 <Link to="/" className="mr-5 hover:text-gray-900">Home</Link>
                 <Link to="/about" className="mr-5 hover:text-gray-900">About Diary</Link>
                 <Link to="/learn" className="mr-5 hover:text-gray-900">Let's start</Link>
+                {user.UserType === 'd' &&(<Link to="/patients" className="mr-5 hover:text-gray-900">Patients</Link>)}
             </nav>
 
             <Link to="/login" className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none focus:bg-gray-200 hover:bg-gray-200 rounded text-base mt-4 md:mt-0 mr-2">Log in</Link>

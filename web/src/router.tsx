@@ -4,6 +4,7 @@ import Login from "@pages/auth/Login";
 import Me from "@pages/auth/Me";
 import Signup from "@pages/auth/Signup";
 import { createBrowserRouter } from "react-router-dom";
+import DoctorView from "@pages/doctor/DoctorView";
 
 export const router = createBrowserRouter([
     {
@@ -25,5 +26,9 @@ export const router = createBrowserRouter([
     {
         path: "/diary",
         element: <DiaryNotes />
+    },
+    {
+        path: "/patients",
+        element: <DoctorView />
     },
 ])
