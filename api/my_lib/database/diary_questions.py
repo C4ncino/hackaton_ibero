@@ -12,7 +12,7 @@ class DiaryQuestions(Base):
     Id = Column(Integer(), primary_key=True)
     IdDiary = Column(Integer(), ForeignKey('diaries.Id'),
                      nullable=False)
-    IdQuestion = Column(Integer(), ForeignKey('users.Id'), nullable=False)
+    IdQuestion = Column(Integer(), ForeignKey('questions.Id'), nullable=False)
 
     def serialize(self):
         """

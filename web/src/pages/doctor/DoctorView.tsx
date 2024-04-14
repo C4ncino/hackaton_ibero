@@ -6,6 +6,7 @@ import { useAPI } from "hooks/useAPI";
 import { useSessionContext } from "hooks/useSessionContext";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 const DoctorView = () => {
      const context = useSessionContext()
@@ -73,7 +74,7 @@ const DoctorView = () => {
                                              <div className="flex-grow sm:pl-8">
                                                   <h2 className="title-font font-medium text-lg text-gray-900">{patient.Name} {patient.LastName}</h2>
                                                   <p className="mb-4">{patient.Email}</p>
-                                                  <button className="mb-8 text-white bg-darkLavanda hover:bg-hoverDarkLavanda flex font-medium rounded-lg text-sm px-5 py-2.5 text-center">Revisar diario</button>
+                                                  <Link to={`/patients/${patient.Id}`} className="mb-8 text-white bg-darkLavanda hover:bg-hoverDarkLavanda flex font-medium rounded-lg text-sm px-5 py-2.5 text-center">Revisar diario</Link >
                                              </div>
                                         </div>
                                    }

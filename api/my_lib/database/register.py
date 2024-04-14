@@ -12,7 +12,6 @@ class Register(Base):
 
     Id = Column(Integer(), primary_key=True)
     IdDiary = Column(Integer(), ForeignKey('diaries.Id'), nullable=False)
-    IdQuestion = Column(Integer(), ForeignKey('questions.Id'), nullable=False)
     Answer = Column(String(512), nullable=False)
     Timestamp = Column(TIMESTAMP(), nullable=False, default=dt.now())
 

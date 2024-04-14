@@ -99,11 +99,11 @@ def patient_diaries(patient_id: int, diary_id: int = None):
     }), 200
 
 
-@patient_bp.route(URI + 'answer/<int:diary_id>/<int:question_id>',
+@patient_bp.route(URI + 'answer/<int:diary_id>',
                   methods=['POST'])
 @crud_template(request, ['answer'])
 @jwt_required()
-def answer_question(diary_id: int, question_id: int):
+def answer_question(diary_id: int):
     """
     Answer a question
 
@@ -115,7 +115,6 @@ def answer_question(diary_id: int, question_id: int):
         'registers',
         {
             'IdDiary': diary_id,
-            'IdQuestion': question_id,
             'Answer': request.json['answer']
         }
     )
