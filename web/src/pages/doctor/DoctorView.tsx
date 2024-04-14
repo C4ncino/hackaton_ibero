@@ -27,12 +27,6 @@ const DoctorView = () => {
                if (user) {
                     const response = await get(`${user.Id}/patients`, context.token);
 
-                    if (response == false) {
-                         context.user = null;
-                         context.token = '';
-                         navigate('/')
-                    }
-
                     setPatients(response);
                }
                else {
