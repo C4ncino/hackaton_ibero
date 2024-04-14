@@ -9,8 +9,9 @@ class DiaryQuestions(Base):
 
     __tablename__ = 'diaries_questions'
 
+    Id = Column(Integer(), primary_key=True, increment=True)
     IdDiary = Column(Integer(), ForeignKey('diaries.Id'),
-                     nullable=False, primary_key=True)
+                     nullable=False)
     IdQuestion = Column(Integer(), ForeignKey('users.Id'), nullable=False)
 
     def serialize(self):
@@ -22,6 +23,7 @@ class DiaryQuestions(Base):
         """
 
         return {
+            "Id": self.Id,
             "IdDiary": self.IdDiary,
             "IdQuestion": self.IdQuestion
         }

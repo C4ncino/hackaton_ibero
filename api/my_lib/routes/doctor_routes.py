@@ -1,3 +1,6 @@
+"""
+Define doctor routes
+"""
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required
 from my_lib.general import URI, database, crud_template, is_none
@@ -16,9 +19,9 @@ def patients(doctor_id: int):
         response with the patients
     """
 
-    success, doctor_id = database.read_by_id('doctors', doctor_id)
+    doctor = database.read_by_id('doctors', doctor_id)
 
-    if not success:
+    if is_none(doctor):
         return jsonify({
             "message": "Doctor not found"
         }), 404
@@ -30,9 +33,9 @@ def patients(doctor_id: int):
     _patients = []
 
     for patient_id in patients_ids:
-        success, patient = database.read_by_id('patients', patient_id)
+        patient = database.read_by_id('patients', patient_id)
 
-        if success:
+        if not is_none(patient):
             _patients.append(patient.serialize())
 
     return jsonify(_patients), 200
@@ -121,9 +124,9 @@ def handle_questions_by_id(_: int, question_id: int = None):
             }), 200
 
     if request.method == 'GET':
-        success, question = database.read_by_id('questions', question_id)
+        question = database.read_by_id('questions', question_id)
 
-        if success:
+        if is_none(question):
             return jsonify({
                 "questions": question.serialize()
             }), 200
