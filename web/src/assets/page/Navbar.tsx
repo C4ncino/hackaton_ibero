@@ -32,11 +32,14 @@ const NavBar = ({ needBlur }: Props) => {
 
             <nav className="md:ml-auto md:mr-auto flex flex-wrap gap-10 items-center text-base justify-center">
                 <Link to="/" className="hover:text-gray-900 w-1/10">Home</Link>
-                <Link to="/about" className="hover:text-gray-900 w-1/10">About Diary</Link>
+                <Link to="/about" className="hover:text-gray-900 w-1/10">Sobre Diary</Link>
                 {context.user && context.user.UserType === 'd' ? (
-                    <Link to="/patients" className="hover:text-gray-900 w-1/10">Patients</Link>
+                    <>
+                    <Link to="/patients" className="hover:text-gray-900 w-1/10">Pacientes</Link>
+                    <Link to="/subpages" className="hover:text-gray-900 w-1/10">Preguntas</Link>
+                    </>
                 ) : (
-                    <Link to="/diary" className="hover:text-gray-900 w-1/10">Daily Diary</Link>
+                    <Link to="/diary" className="hover:text-gray-900 w-1/10">Diarios</Link>
                 )}
             </nav>
 
