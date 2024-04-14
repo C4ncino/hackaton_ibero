@@ -136,10 +136,10 @@ def handle_questions_by_id(_: int, question_id: int = None):
     }), 404
 
 
-@doctor_bp.route(URI + 'create_diary/<int:pacient_id>', methods=['POST'])
+@doctor_bp.route(URI + 'create_diary/<int:patient_id>', methods=['POST'])
 @crud_template(request, ['title', 'description'])
 @jwt_required()
-def create_diary(pacient_id: int):
+def create_diary(patient_id: int):
     """
     Create a diary
 
@@ -150,7 +150,7 @@ def create_diary(pacient_id: int):
     success, diary = database.create_table_row(
         'diaries',
         {
-            'IdUser': pacient_id,
+            'IdUser': patient_id,
             'Title': request.json['title'],
             'Description': request.json['description']
         }

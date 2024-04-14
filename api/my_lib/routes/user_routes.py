@@ -135,7 +135,7 @@ def me(user_id):
 
         return jsonify({
             "message": "Updated Successfully",
-            "user": user.seralize()
+            "user": user.serialize()
         }), 200
 
     if user.UserType == 'd':
