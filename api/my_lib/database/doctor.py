@@ -9,7 +9,8 @@ class Doctor(Base):
 
     __tablename__ = 'doctors'
 
-    Id = Column(Integer(),  ForeignKey('users.Id'), primary_key=True)
+    Id = Column(Integer(),  ForeignKey('users.Id'),
+                primary_key=True, autoincrement=False)
     ContactEmail = Column(String(45), nullable=False, unique=True)
     ExperienceYears = Column(Integer(), nullable=False)
 

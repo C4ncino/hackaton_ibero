@@ -9,7 +9,8 @@ class Patient(Base):
 
     __tablename__ = 'patients'
 
-    Id = Column(Integer(), ForeignKey('users.Id'), primary_key=True)
+    Id = Column(Integer(), ForeignKey('users.Id'),
+                primary_key=True, autoincrement=False)
     IdDoctor = Column(Integer(), ForeignKey('doctors.Id'), nullable=False)
 
     def serialize(self):
