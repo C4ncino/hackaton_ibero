@@ -49,14 +49,14 @@ const NavBar = ({ needBlur }: Props) => {
                         <FontAwesomeIcon icon={faUser} className="w-5 h-5 text-darkLavanda ml-2" />
                     </Link>
                     <button onClick={logOut} className="inline-flex items-center bg-darkLavanda border-0 py-1 px-3 focus:outline-none focus:bg-lavanda hover:bg-lavanda rounded mt-4 md:mt-0 mr-4 text-white">
-                        Log Out
+                        Salir
                         <FontAwesomeIcon icon={faArrowRightFromBracket} className="w-5 h-5 text-white ml-2" />
                     </button>
                 </>
             ) : (
                 <div className='xl:1/6 lg:w-1/5 w-1/4'>
-                    <Link to="/login" className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none focus:bg-gray-200 hover:bg-gray-200 rounded text-base mt-4 md:mt-0 mr-2">Log in</Link>
-                    <Link to="/signup" className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none focus:bg-gray-200 hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Sign up</Link>
+                    <Link to="/login" className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none focus:bg-gray-200 hover:bg-gray-200 rounded text-base mt-4 md:mt-0 mr-2">Acceder</Link>
+                    <Link to="/signup" className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none focus:bg-gray-200 hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Registrar</Link>
                 </div>
             )
             }
