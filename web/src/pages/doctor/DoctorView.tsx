@@ -4,10 +4,9 @@ import { useSessionContext } from "hooks/useSessionContext";
 const DoctorView = () => {
 
      const context = useSessionContext()
-     const user: any = context.user
 
-     console.log(user.UserType);
-     
+     console.log(context.user);
+
 
      return (
           <PageTemplate>
@@ -33,8 +32,8 @@ const DoctorView = () => {
                                              </span>
                                         </div>
                                    </div>
-                                   </div>
-                                   <div className="p-4 lg:w-1/2">
+                              </div>
+                              <div className="p-4 lg:w-1/2">
                                    <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
                                         <img alt="team" className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="https://dummyimage.com/201x201" />
                                         <div className="flex-grow sm:pl-8">
@@ -44,7 +43,7 @@ const DoctorView = () => {
                                              <span className="inline-flex">
                                                   <a className="text-gray-500">
                                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
-                                                       <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                                                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
                                                        </svg>
                                                   </a>
                                              </span>

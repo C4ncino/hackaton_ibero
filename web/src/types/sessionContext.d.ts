@@ -2,11 +2,10 @@ type user = {
      Id: number,
      Name: string,
      LastName: string,
-     ExperienceYears: number,
      BirthDate: string,
      Email: string,
-     Password: string,
-     ContactEmail: string
+     PhoneNumber: string,
+     UserType: 'd' | 'p',
 } | null
 
 

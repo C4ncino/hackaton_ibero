@@ -1,10 +1,6 @@
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-<<<<<<< HEAD
-import { faBookBookmark } from '@fortawesome/free-solid-svg-icons';
-=======
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookBookmark, faUser } from '@fortawesome/free-solid-svg-icons';
->>>>>>> cancino
 import { useSessionContext } from 'hooks/useSessionContext';
 
 interface Props {
@@ -16,9 +12,6 @@ const NavBar = ({ needBlur }: Props) => {
 
     let headerClass = "text-gray-600 w-full px-32 py-5  mx-auto flex flex-wrap flex-col md:flex-row items-center rounded-lg"
     headerClass += needBlur ? " bg-platinum/40 backdrop-hue-rotate-15 backdrop-blur-sm" : ""
-
-    const context = useSessionContext()
-    const user: any = context.user || false
 
     return (
         <header className={headerClass} >
@@ -32,7 +25,7 @@ const NavBar = ({ needBlur }: Props) => {
                 <Link to="/" className="mr-5 hover:text-gray-900">Home</Link>
                 <Link to="/diary" className="mr-5 hover:text-gray-900">About Diary</Link>
                 <Link to="/learn" className="mr-5 hover:text-gray-900">Let's start</Link>
-                {user.UserType === 'd' &&(<Link to="/patients" className="mr-5 hover:text-gray-900">Patients</Link>)}
+                {context.user && context.user.UserType === 'd' && (<Link to="/patients" className="mr-5 hover:text-gray-900">Patients</Link>)}
             </nav>
 
             {context.user ? (
