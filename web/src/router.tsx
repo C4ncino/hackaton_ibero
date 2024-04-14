@@ -7,6 +7,7 @@ import Signup from "@pages/auth/Signup";
 import DoctorView from "@pages/doctor/DoctorView";
 import About from "@pages/home/About";
 import OneDiary from "@pages/diary/subpages/OneDiarie";
+import AddDoctor from "@pages/patient/AddDoctor";
 
 export const router = createBrowserRouter([
     {
@@ -14,7 +15,7 @@ export const router = createBrowserRouter([
         element: <Home />
     },
     {
-        path: "/login",
+        path: "/login/:invite?",
         element: <Login />
     },
     {
@@ -40,5 +41,9 @@ export const router = createBrowserRouter([
     {
         path: "/patients",
         element: <DoctorView />
+    },
+    {
+        path: "/addDoctor/:idDoctor",
+        element: <AddDoctor />
     },
 ])

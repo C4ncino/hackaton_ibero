@@ -33,7 +33,7 @@ def patients(doctor_id: int):
     _patients = []
 
     for patient_id in patients_ids:
-        patient = database.read_by_id('patients', patient_id)
+        patient = database.read_by_id('patients', patient_id.Id)
 
         if not is_none(patient):
             _patients.append(patient.serialize())
