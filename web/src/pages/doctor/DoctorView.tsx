@@ -49,8 +49,6 @@ const DoctorView = () => {
                navigator.clipboard.writeText(`http://localhost:5173/addDoctor/${user.Id}`)
                setIcon(faCheck)
           }
-
-          navigate('/')
      }
 
      return (

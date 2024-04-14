@@ -10,37 +10,37 @@ const AddDoctor = () => {
 
      const params = useParams()
      const navigate = useNavigate()
-     
+
      const { post } = useAPI();
 
      const context = useSessionContext()
      const user: any = context.user
 
-     const { get }  = useAPI();
+     const { get } = useAPI();
 
      useEffect(() => {
           const fetchData = async () => {
                try {
                     const response = await get(`me/${params.idDoctor}`, context.token);
                     console.log(response["user"]);
-                    
-                    setDoctorData(response["user"]); 
+
+                    setDoctorData(response["user"]);
                     // console.log(newData);
-               } 
+               }
                catch (error) {
                     console.error('Error al obtener los datos:', error);
                }
           };
-          
-          if (context.token === '' ) {
+
+          if (context.token === '') {
                navigate(`/login/${params.idDoctor}`);
           }
 
           fetchData();
-     }, []); 
+     }, []);
 
      const accept = async () => {
-          post('add_doctor', context.token, JSON.stringify({"userId": user.Id, "doctorId": params.idDoctor}))
+          post('add_doctor', context.token, JSON.stringify({ "userId": user.Id, "doctorId": params.idDoctor }))
           navigate('/')
      }
 
@@ -49,9 +49,9 @@ const AddDoctor = () => {
           <PageTemplate>
                {doctorData && (<section className="text-gray-600 body-font">
                     <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-                    <img className="lg:w-1/6 md:w-2/6 w-4/6 mb-10 object-cover object-center rounded" alt="hero" src="https://thispersondoesnotexist.com/" />
+                         <img className="lg:w-1/6 md:w-2/6 w-4/6 mb-10 object-cover object-center rounded" alt="hero" src="https://thispersondoesnotexist.com/" />
                          <div className="text-center lg:w-2/3 w-full">
-                              <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{doctorData.Name} {user.LastName}</h1>
+                              <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{doctorData.Name} {doctorData.LastName}</h1>
                               <p>Contacto: {doctorData.ContactEmail}</p>
                               <p>Años de experiencia: {doctorData.ExperienceYears}</p>
 
