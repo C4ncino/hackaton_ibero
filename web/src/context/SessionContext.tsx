@@ -32,8 +32,6 @@ const SessionContextProvider = ({ children }: Props) => {
         else if (type === false) {
             console.log("Paciente");
             data = await post('signup/p', "", JSON.stringify({ "name": firstName, "lastName": lastName, "email": email, "password": passwordHash, "birthDate": birthDate }))
-            console.log(typeof birthDate);
-            console.log(data);
         }
 
         if (data != false) {
