@@ -27,5 +27,5 @@ class Register(Base):
             "Id": self.Id,
             "IdDiary": self.IdDiary,
             "Answer": self.Answer,
-            "Timestamp": self.Timestamp.strftime('%d-%m-%Y'),
+            "Timestamp": self.Timestamp.strftime('%d-%m-%Y: %H:%M'),
         }

@@ -9,7 +9,7 @@ const DiaryNotes = ({ questions, answers }: Props) => {
             <section className="mx-auto w-[60%] text-center">
                 {questions.length > 0 ? (
                     questions.map((ques) => (
-                        <h2 className="font-semibold text-platinum text-lg">{ques.QuestionText}</h2>
+                        <h2 key={ques.Id} className="font-semibold text-platinum text-lg">{ques.QuestionText}</h2>
                     ))
                 ) : (
                     <h2 className="font-semibold text-platinum text-lg">Anota lo que sentiste en el dia: </h2>
