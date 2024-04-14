@@ -6,8 +6,8 @@ import React, { useState, useEffect } from "react";
 
 
 const Me = () => {
-     const {get} = useAPI();
-     const [data, getData] = useState(null);
+     const { get } = useAPI();
+     const [data, setData] = useState<null | user>(null);
      const context = useSessionContext();
 
      useEffect(() => {
@@ -16,25 +16,28 @@ const Me = () => {
 
      const fetchData = async () => {
           console.log(context.token);
-          const response = await get('me/1', context.token);
+          const data = await get('me/1', context.token);
 
-          const jsonData  = await response.json();
-          getData(jsonData);
-          console.log(jsonData);
+          console.log(data);
+
+          if (data != false) {
+               setData(data['user']);
+          }
+
      }
 
      return (
-          <PageTemplate>
-            <h1>Información del usuario</h1>
-            {data && (
-                <div>
-                    <p>Nombre: {data.name}</p>
-                    <p>Apellido: {data.lastName}</p>
-                    <p>Email: {data.email}</p>
-                    <p>Fecha de nacimiento: {data.birthDate}</p>
-                </div>
-            )}
-        </PageTemplate>
+          <PageTemplate needBlur>
+               <h1>Información del usuario</h1>
+               {data && (
+                    <div>
+                         <p>Nombre: {data.Name}</p>
+                         <p>Apellido: {data.LastName}</p>
+                         <p>Email: {data.Email}</p>
+                         <p>Fecha de nacimiento: {data.BirthDate}</p>
+                    </div>
+               )}
+          </PageTemplate>
      )
 }
 
