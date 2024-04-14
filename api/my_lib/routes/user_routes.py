@@ -137,8 +137,10 @@ def me(user_id):
             "message": "Updated Successfully",
             "user": user.serialize()
         }), 200
+    
+    user = user.serialize()
 
-    if user.UserType == 'd':
+    if user["UserType"] == 'd':
         doctor = database.read_by_id('doctors', user_id)
 
         if is_none(doctor):
@@ -146,10 +148,10 @@ def me(user_id):
                 "message": "Not found",
             }), 404
 
-        user['contactEmail'] = doctor.ContactEmail
+        user['ContactEmail'] = doctor.ContactEmail
         user['ExperienceYears'] = doctor.ExperienceYears
 
     return jsonify({
         "message": "Login Successfully",
-        "user": user.serialize()
+        "user": user
     }), 200

@@ -1,13 +1,11 @@
 import PageTemplate from "@assets/PageTemplate";
-import { useSessionContext } from "hooks/useSessionContext";
 
 const DoctorView = () => {
 
-     const context = useSessionContext()
-
-     console.log(context.user);
-
-
+     const copyMessage = () => {
+          navigator.clipboard.writeText('http://localhost:5173/add_doctor/')
+     }
+     // 
      return (
           <PageTemplate>
                <section className="text-gray-600 body-font">
@@ -15,6 +13,7 @@ const DoctorView = () => {
                          <div className="flex flex-col text-center w-full mb-20">
                               <h1 className="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">OUR TEAM</h1>
                          </div>
+                         <button onClick={copyMessage} className="text-white bg-darkLavanda hover:bg-hoverDarkLavanda flex font-medium rounded-lg text-sm px-5 py-2.5 text-center">Invite link</button>
                          <div className="flex flex-wrap -m-4">
                               <div className="p-4 lg:w-1/2">
                                    <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">

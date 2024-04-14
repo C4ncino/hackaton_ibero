@@ -3,24 +3,29 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { useSessionContext } from "hooks/useSessionContext";
 import { FormEvent, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const Login = () => {
      const [email, setEmail] = useState("")
      const [password, setPassword] = useState("")
      const [loginCorrect, setLogin] = useState(true)
 
+     const params = useParams()
+     // console.log(params.invite);
+
      const context = useSessionContext()
-     const goHome = useNavigate()
+     const navigate = useNavigate()
 
      const OnSubmit = async (event: FormEvent<HTMLFormElement>) => {
           event.preventDefault()
 
           const res = await context.login(email, password);
 
-          console.log(res)
-          if (res == true){
-            goHome('/')
+          if (res == true && params.invite == undefined){
+               navigate('/')
+          }
+          else{
+               navigate(`/addDoctor/${params.invite}`)   
           }
      }
 
