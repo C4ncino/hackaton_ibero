@@ -33,7 +33,7 @@ const Diaries = () => {
 
 
      const creatDiary = async () => {
-          const data = await post(`create_diary/${context.user?.Id}`, context.token, JSON.stringify({ "title": 'Diario base', "description": "Diario con preguntas base del dia."}))
+          const data = await post(`create_diary/${context.user?.Id}`, context.token, JSON.stringify({ "title": 'Mi Diario', "description": "Diario predefinido con preguntas base."}))
           console.log(data.diary);
           if (diaries){
                setDiaries([data.diary, ... diaries])
