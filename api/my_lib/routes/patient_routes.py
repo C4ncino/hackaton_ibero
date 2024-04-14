@@ -80,7 +80,7 @@ def patient_diaries(patient_id: int, diary_id: int = None):
     )
 
     questions_ids = database.read_by_field(
-        'diaries_questions',
+        'diary_questions',
         'IdDiary',
         diary_id
     )

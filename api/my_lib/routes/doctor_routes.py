@@ -74,14 +74,9 @@ def handle_questions(doctor_id: int):
     if request.method == 'GET':
         questions = None
 
-        success, questions = database.read_by_field(
+        questions = database.read_by_field(
             'questions', 'IdDoctor', doctor_id
         )
-
-        if not success:
-            return jsonify({
-                "message": "Questions not found"
-            }), 404
 
         return jsonify({
             "questions": [question.serialize() for question in questions]

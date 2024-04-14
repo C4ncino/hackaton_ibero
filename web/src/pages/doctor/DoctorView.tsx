@@ -24,14 +24,19 @@ const DoctorView = () => {
           if (!user) navigate('/')
 
           const fetchData = async () => {
-               try {
-                    if (user) {
-                         const response = await get(`${user.Id}/patients`, context.token);
+               if (user) {
+                    const response = await get(`${user.Id}/patients`, context.token);
 
-                         setPatients(response);
+                    if (response == false) {
+                         context.user = null;
+                         context.token = '';
+                         navigate('/')
                     }
-               } catch (error) {
-                    console.error('Error al obtener los datos de los pacientes:', error);
+
+                    setPatients(response);
+               }
+               else {
+                    navigate('/')
                }
           };
 

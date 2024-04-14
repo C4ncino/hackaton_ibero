@@ -9,6 +9,8 @@ import About from "@pages/home/About";
 import OneDiary from "@pages/diary/subpages/OneDiarie";
 import AddDoctor from "@pages/patient/AddDoctor";
 import Patient from "@pages/doctor/subpages/Patient";
+import CreateDiary from "@pages/doctor/subpages/Create";
+import ReadDiary from "@pages/doctor/subpages/ReadDiary";
 
 export const router = createBrowserRouter([
     {
@@ -46,6 +48,14 @@ export const router = createBrowserRouter([
     {
         path: "/patients/:id",
         element: <Patient />
+    },
+    {
+        path: "/read/:idUser/:idDiary",
+        element: <ReadDiary />
+    },
+    {
+        path: "create_diary/:idUser",
+        element: <CreateDiary />
     },
     {
         path: "/addDoctor/:idDoctor",

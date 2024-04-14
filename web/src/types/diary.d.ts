@@ -3,5 +3,11 @@ type Diary = {
     UserId: number,
     Title: string,
     Description: string,
-    Date: string
+    Timestamp: string
+}
+
+type DiaryQuestion = {
+    Id: number,
+    IdDiary: number,
+    IdQuestion: number
 }

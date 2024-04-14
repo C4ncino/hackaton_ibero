@@ -3,7 +3,7 @@ Database Interface Class
 """
 import os
 import json
-
+from datetime import datetime as dt
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -55,41 +55,43 @@ class DatabaseInterface:
         self.session = session_class()
 
         Base.metadata.create_all(self.engine)
-        
+
         data = self.session.query(Question).all()
-        
+
         if len(data) == 0:
-            
-            with open('data.json', 'r') as f:
+
+            with open('data.json', 'r', encoding='utf-8') as f:
                 data = json.load(f)
 
             for user in data["user"]:
+                user["BirthDate"] = dt.strptime(user["BirthDate"], '%d-%m-%Y')
+
                 self.session.add(User(**user))
-                
+
             self.session.commit()
-               
+
             for doctor in data["doctor"]:
-                    self.session.add(Doctor(**doctor))
-            
+                self.session.add(Doctor(**doctor))
+
             for patient in data["patient"]:
-                self.session.add(Patient(**patient))  
-            
+                self.session.add(Patient(**patient))
+
             self.session.commit()
-                  
+
             for question in data["questions"]:
                 self.session.add(Question(**question))
-                      
+
             for diary in data["diary"]:
                 self.session.add(Diary(**diary))
-                
+
             self.session.commit()
-                
+
             for register in data["register"]:
                 self.session.add(Register(**register))
-                    
+
             for diary_q in data["diary_question"]:
                 self.session.add(DiaryQuestions(**diary_q))
-                    
+
             self.session.commit()
 
     def create_table_row(self, table_name: str, row_info: dict):
