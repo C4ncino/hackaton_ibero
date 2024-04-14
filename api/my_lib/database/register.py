@@ -10,7 +10,7 @@ class Register(Base):
 
     __tablename__ = 'registers'
 
-    Id = Column(Integer(), primary_key=True)
+    Id = Column(Integer(), primary_key=True, increment=True)
     IdDiary = Column(Integer(), ForeignKey('diaries.Id'), nullable=False)
     IdQuestion = Column(Integer(), ForeignKey('questions.Id'), nullable=False)
     Answer = Column(String(512), nullable=False)

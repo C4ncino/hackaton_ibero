@@ -54,7 +54,7 @@ class DatabaseInterface:
 
         Base.metadata.create_all(self.engine)
 
-    def crate_table_row(self, table_name: str, row_info: dict):
+    def create_table_row(self, table_name: str, row_info: dict):
         """
         Create a new row in the table
 
