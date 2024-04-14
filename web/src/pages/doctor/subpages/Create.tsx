@@ -53,8 +53,6 @@ const CreateDiary = () => {
             description: description
         }))
 
-        console.log(diary)
-
         const diaryId = diary['diary']['Id']
 
         for (let i = 0; i < diary_questions.length; i++) {
@@ -103,8 +101,8 @@ const CreateDiary = () => {
                     <legend className="text-white text-lg font-light pb-3">Questions</legend>
                     <div className="max-h-32 overflow-y-auto">
                         {questions.map((question) => (
-                            <div key={question.Id} className="flex flex-row gap-5 items-center">
-                                <label htmlFor={`question_${question.Id}`} className="text-lg">
+                            <div key={question.Id} className="flex flex-row gap-5 items-center justify-between">
+                                <label htmlFor={`question_${question.Id}`} className="text-lg grow">
                                     {question.QuestionText}
                                 </label>
 
