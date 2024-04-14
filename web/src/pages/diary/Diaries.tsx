@@ -29,7 +29,7 @@ const Diaries = () => {
 
      useEffect(() => {
           getData();
-     });
+     }, []);
 
      return (
           <PageTemplate>

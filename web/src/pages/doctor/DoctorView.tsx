@@ -1,98 +1,88 @@
 import PageTemplate from "@assets/PageTemplate";
+import { faCopy } from "@fortawesome/free-regular-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAPI } from "hooks/useAPI";
 import { useSessionContext } from "hooks/useSessionContext";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 const DoctorView = () => {
      const context = useSessionContext()
-     const user: any = context.user
-     const [patients, setPatients] = useState([])
-     const [patientsInfo, setPatientsInfo] = useState<any>([])
+     const navigate = useNavigate()
+     const user: user = context.user
+     const [currentIcon, setIcon] = useState(faCopy)
+     const [patients, setPatients] = useState<user[]>([])
 
      const {
           get
      } = useAPI();
-     let i = 0;
-     console.log(i);
-     
+
 
      useEffect(() => {
+          if (!user) navigate('/')
+
           const fetchData = async () => {
-              try {
-                  const response = await get(`${user.Id}/patients`, context.token);
-                  setPatients(response);
-              } catch (error) {
-                  console.error('Error al obtener los datos de los pacientes:', error);
-              }
+               try {
+                    if (user) {
+                         const response = await get(`${user.Id}/patients`, context.token);
+
+                         setPatients(response);
+                    }
+               } catch (error) {
+                    console.error('Error al obtener los datos de los pacientes:', error);
+               }
           };
-      
+
           fetchData();
-      }, [user.Id, context.token]);
-      
-      useEffect(() => {
-          const fetchPatientsInfo = async () => {
-              try {
-                  const patientsInfo = await Promise.all(patients.map(async (patient) => {
-                      const res = await get(`me/${patient.Id}`, context.token);
-                      return res.user;
-                  }));
-                  setPatientsInfo(patientsInfo);
-              } catch (error) {
-                  console.error('Error al obtener la información de los pacientes:', error);
-              }
-          };
-      
-          if (patients.length > 0) {
-              fetchPatientsInfo();
+     }, []);
+
+
+     const copyMessage = async () => {
+          if (user) {
+               navigator.clipboard.writeText(`http://localhost:5173/addDoctor/${user.Id}`)
+               setIcon(faCheck)
           }
-      }, [patients, context.token]);
 
-     
-     console.log(patientsInfo);
-     
-
-     const copyMessage = async() => {
-          navigator.clipboard.writeText(`http://localhost:5173/addDoctor/${user.Id}`)
+          navigate('/')
      }
-     
-     //http://localhost:5173/addDoctor/1
-
 
      return (
           <PageTemplate>
-               <section className="text-gray-600 body-font">
-                    <div className="container px-5 py-24 mx-auto">
-                         <div className="flex flex-col text-center w-full mb-7">
-                              <h1 className="text-3xl font-bold title-font mb-4 text-white tracking-widest">Pacientes</h1>
-                         </div>
-                         <button onClick={copyMessage} className="mb-8 text-white bg-darkLavanda hover:bg-hoverDarkLavanda flex font-medium rounded-lg text-sm px-5 py-2.5 text-center">Invite link</button>
-                         <div className="flex flex-wrap -m-4">
-                              {
-                                   patientsInfo.map((patient, index) => (
-                                        <div key={index} className="p-4 lg:w-1/3">
-                                             <div className="h-full flex sm:flex-row flex-col bg-white dark:bg-columbia/40 backdrop-hue-rotate-15 backdrop-blur-sm items-center sm:justify-start justify-center text-center sm:text-left p-3 rounded-xl">
-                                                  <img alt="team" className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="https://thispersondoesnotexist.com/" />
-                                                  <div className="flex-grow sm:pl-8">
-                                                       <h2 className="title-font font-medium text-lg text-gray-900">Nombre: {patient.Name} {patient.LastName}</h2>
-                                                       <p className="mb-4">Email: {patient.Email}</p>
-                                                       <span className="inline-flex">
-                                                            <a className="text-gray-500">
-                                                                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-                                                                      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                                                                 </svg>
-                                                            </a>
-                                                       </span>
-                                                       <button onClick={copyMessage} className="mb-8 text-white bg-darkLavanda hover:bg-hoverDarkLavanda flex font-medium rounded-lg text-sm px-5 py-2.5 text-center">Revisar diario</button>
-                                                  </div>
+               <header className="flex flex-row justify-center mt-10 px-20">
+                    <span className="w-1/6" />
+
+                    <h1 className="text-4xl text-center font-semibold text-white grow ">Pacientes</h1>
+
+                    <span className="w-1/6">
+                         <button onClick={copyMessage} className="text-white bg-darkLavanda hover:bg-hoverDarkLavanda flex items-center font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-auto gap-2">
+                              Copy link
+
+                              <FontAwesomeIcon icon={currentIcon} />
+                         </button>
+                    </span>
+               </header>
+
+               <div className="flex flex-wrap mx-4">
+                    {
+                         patients.map((patient, index) => (
+                              <div key={index} className="p-4 lg:w-1/3 md:w-1/2 w-full">
+                                   {patient &&
+                                        <div className="h-full flex sm:flex-row flex-col bg-white dark:bg-columbia/40 backdrop-hue-rotate-15 backdrop-blur-sm items-center sm:justify-start justify-center text-center sm:text-left p-3 rounded-xl">
+                                             <img alt="team" className="flex-shrink-0 rounded-lg lg:w-48 h-48 md:w-32 object-cover object-center sm:mb-0 mb-4" src="https://thispersondoesnotexist.com/" />
+                                             <div className="flex-grow sm:pl-8">
+                                                  <h2 className="title-font font-medium text-lg text-gray-900">{patient.Name} {patient.LastName}</h2>
+                                                  <p className="mb-4">{patient.Email}</p>
+                                                  <button className="mb-8 text-white bg-darkLavanda hover:bg-hoverDarkLavanda flex font-medium rounded-lg text-sm px-5 py-2.5 text-center">Revisar diario</button>
                                              </div>
                                         </div>
-                                   ))
-                              }  
+                                   }
+                              </div>
+                         ))
 
-                         </div>
-                    </div>
-               </section>
-          </PageTemplate>
+                    }
+               </div>
+          </PageTemplate >
      )
 }
 

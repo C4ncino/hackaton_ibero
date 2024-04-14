@@ -1,6 +1,4 @@
 import PageTemplate from "@assets/PageTemplate";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { useSessionContext } from "hooks/useSessionContext";
 import { FormEvent, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -8,7 +6,6 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 const Login = () => {
      const [email, setEmail] = useState("")
      const [password, setPassword] = useState("")
-     const [loginCorrect, setLogin] = useState(true)
 
      const params = useParams()
      // console.log(params.invite);
@@ -21,11 +18,11 @@ const Login = () => {
 
           const res = await context.login(email, password);
 
-          if (res == true && params.invite == undefined){
+          if (res == true && params.invite == undefined) {
                navigate('/')
           }
-          else{
-               navigate(`/addDoctor/${params.invite}`)   
+          else {
+               navigate(`/addDoctor/${params.invite}`)
           }
      }
 
@@ -53,8 +50,8 @@ const Login = () => {
                                    </div>
 
                                    <div className="flex justify-center items-center">
-                                        <button type="submit" 
-                                        className="text-white bg-darkLavanda hover:bg-hoverDarkLavanda flex font-medium rounded-lg text-sm px-5 py-2.5 text-center">Acceder</button>
+                                        <button type="submit"
+                                             className="text-white bg-darkLavanda hover:bg-hoverDarkLavanda flex font-medium rounded-lg text-sm px-5 py-2.5 text-center">Acceder</button>
                                    </div>
                                    <p className="text-sm font-light text-gray-800">
                                         ¿No tienes una cuenta? <Link to='/signup' className="font-medium text-darkLavanda hover:underline">Registrar</Link>
