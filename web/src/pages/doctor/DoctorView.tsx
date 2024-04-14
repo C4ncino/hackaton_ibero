@@ -1,11 +1,14 @@
 import PageTemplate from "@assets/PageTemplate";
+import { useSessionContext } from "hooks/useSessionContext";
 
 const DoctorView = () => {
+     const context = useSessionContext()
+     const user: any = context.user
 
      const copyMessage = () => {
-          navigator.clipboard.writeText('http://localhost:5173/add_doctor/')
+          navigator.clipboard.writeText(`http://localhost:5173/addDoctor/${user.Id}`)
      }
-     // 
+     
      return (
           <PageTemplate>
                <section className="text-gray-600 body-font">
