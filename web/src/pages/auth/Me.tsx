@@ -6,10 +6,11 @@ import { useState, useEffect } from "react";
 const Me = () => {
     const { get } = useAPI();
     const [data, setData] = useState<null | user>(null);
+    const [daries, setDaries] = useState<any>();
     const context = useSessionContext();
 
     useEffect(() => {
-        fetchData();
+        fetchData()
     }, []);
 
     const fetchData = async () => {
@@ -21,52 +22,45 @@ const Me = () => {
         if (data != false) {
             setData(data['user']);
         }
-
     }
+    
 
     return (
-        <PageTemplate needBlur>
-            <div className="mt-20 mx-auto text-center text-4xl text-white">
-                <h1>Información del usuario</h1>
-            </div>
-            {data && (
-                <div className="mx-auto relative overflow-x-auto sm:rounded-lg p-20 ">
-                    <table className="mx-auto w-full max-w-xl overflow-auto bg-white border-rounded-lg shadow">
-                        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
-                                <th scope="col" className="px-6 py-3">
-                                    Nombre
-                                </th>
-                                <th scope="col" className="px-6 py-3">
-                                    Apellido
-                                </th>
-                                <th scope="col" className="px-6 py-3">
-                                    Email
-                                </th>
-                                <th scope="col" className="px-6 py-3">
-                                    Fecha de nacimiento
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {data.Name}
-                                </th>
-                                <td className="px-6 py-4">
-                                    {data.LastName}
-                                </td>
-                                <td className="px-6 py-4">
-                                    {data.Email}
-                                </td>
-                                <td className="px-6 py-4">
-                                    {data.BirthDate}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <PageTemplate>
+             <div className="flex flex-col justify-center items-center mt-20">
+                <h1 className="text-4xl font-bold text-hoverDarkLavanda mb-10">Información del usuario</h1>
+                {data && (
+                    <div className="bg-platinum/20 backdrop-blur-lg shadow-lg rounded-lg overflow-hidden max-w-md mx-auto">
+                        <div className="flex justify-center items-center py-8">
+                            <img
+                            src="https://thispersondoesnotexist.com/" // Placeholder until user provides image
+                            alt="Avatar"
+                            className="rounded-full object-cover object-center w-34 h-34 md:w-52 md:h-52"
+                            />
+                        </div>
+                        <div className="p-8 text-center">
+                            <h2 className="text-2xl font-semibold text-gray-900 mb-2">
+                            {data.Name} {data.LastName}
+                            </h2>
+                            <ul className="list-none space-y-2 text-gray-700">
+                            <li>
+                                <span className="inline-block font-medium text-gray-900">Correo electrónico:</span> {data.Email}
+                            </li>
+                            <li>
+                                <span className="inline-block font-medium text-gray-900">Fecha de nacimiento:</span> {data.BirthDate}
+                            </li>
+                            <li>
+                            <span className="inline-block font-medium text-gray-900">Tipo de usuario: </span><span className="inline-block font-bold text-darkLavanda ml-1">{data.UserType === 'p' ? 'Paciente' : 'Doctor'}</span> 
+                            </li>
+                            
+                            </ul>
+                        </div>
+                    </div>
+                )}
                 </div>
-            )}
+
+
+
         </PageTemplate>
 
 

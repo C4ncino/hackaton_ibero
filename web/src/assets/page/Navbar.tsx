@@ -11,7 +11,7 @@ const NavBar = ({ needBlur }: Props) => {
     const context = useSessionContext()
     const navigate = useNavigate()
 
-    let headerClass = "text-gray-600 w-full lg:px-32 px-12 py-5  mx-auto flex flex-wrap flex-col md:flex-row items-center rounded-lg"
+    let headerClass = "text-gray-600 w-full lg:px-32 px-12 py-5 mx-auto flex flex-wrap flex-col md:flex-row items-center rounded-lg"
     headerClass += needBlur ? " bg-platinum/40 backdrop-hue-rotate-15 backdrop-blur-sm" : ""
 
 
@@ -26,11 +26,10 @@ const NavBar = ({ needBlur }: Props) => {
         <header className={headerClass} >
             <Link to="/" className="flex title-font font-medium items-center text-xl text-gray-900 mb-4 md:mb-0 xl:1/6 lg:w-1/5 w-1/4 md:mx-0 mx-auto justify-center lg:justify-start gap-3">
                 <FontAwesomeIcon icon={faBookBookmark} className="w-6 h-6 text-darkLavanda" />
-
                 Diary
             </Link>
 
-            <nav className="md:ml-auto md:mr-auto flex flex-wrap gap-10 items-center text-base justify-center">
+            <nav className="md:ml-auto md:mr-auto flex flex-wrap gap-11 items-center text-base justify-center">
                 <Link to="/" className="hover:text-gray-900 w-1/10">Home</Link>
                 <Link to="/about" className="hover:text-gray-900 w-1/10">About Diary</Link>
                 {context.user && context.user.UserType === 'd' ? (
