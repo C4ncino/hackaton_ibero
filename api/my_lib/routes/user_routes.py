@@ -152,6 +152,5 @@ def me(user_id):
         user['ExperienceYears'] = doctor.ExperienceYears
 
     return jsonify({
-        "message": "Login Successfully",
         "user": user
     }), 200
