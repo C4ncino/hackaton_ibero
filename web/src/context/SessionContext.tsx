@@ -40,7 +40,7 @@ const SessionContextProvider = ({ children }: Props) => {
         }
 
         if (data != false) {
-            // setUser(data['user'])
+            setUser(data['user'])
             setToken(data['token'])
             return true
         }
@@ -50,8 +50,10 @@ const SessionContextProvider = ({ children }: Props) => {
 
     const login = async (email: string, password: string) => {
         const passwordHash = MD5(password).toString();
+    
 
         const data = await post("login", "", JSON.stringify({ "email": email, "password": passwordHash }))
+        console.log(data)
 
         if (data != false) {
             setUser(data['user'])
